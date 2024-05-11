@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsullar</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Məhsullar</h1>
+        <table id="mehsulTable">
+            <thead>
+                <tr>
+                    <th>Məhsul</th>
+                    <th>Qiymət</th>
+                    <th>Stok</th>
+                    <th>Əməliyyatlar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Məhsullar burada yaradılacaq -->
+            </tbody>
+        </table>
+        <h2>Yeni Məhsul Əlavə Et</h2>
+        <form id="addForm">
+            <label for="name">Məhsul Adı:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="price">Qiymət:</label>
+            <input type="number" id="price" name="price" required><br><br>
+            <label for="stock">Stok:</label>
+            <input type="number" id="stock" name="stock" required><br><br>
+            <button type="submit">Əlavə Et</button>
+        </form>
+        <div id="updateFormContainer" style="display:none;">
+            <h2>Məhsulu Düzəliş Et</h2>
+            <form id="updateForm">
+                <input type="hidden" id="updateId" name="id">
+                <label for="updateName">Məhsul Adı:</label>
+                <input type="text" id="updateName" name="name" required><br><br>
+                <label for="updatePrice">Qiymət:</label>
+                <input type="number" id="updatePrice" name="price" required><br><br>
+                <label for="updateStock">Stok:</label>
+                <input type="number" id="updateStock" name="stock" required><br><br>
+                <button type="submit">Düzəliş Et</button>
+                <button type="button" onclick="cancelUpdate()">Ləğv Et</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

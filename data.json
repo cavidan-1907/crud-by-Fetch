@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "name": "Qələm45",
+      "price": 46,
+      "stock": 56889,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "w33Defter",
+      "price": 5,
+      "stock": 30
+    },
+    {
+      "id": 3,
+      "name": "Silqə",
+      "price": 1,
+      "stock": 100
+    },
+    {
+      "id": 4,
+      "name": "Cavidan",
+      "price": 34,
+      "stock": 34
+    }
+  ]
+}
