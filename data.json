@@ -1,28 +1,28 @@
 {
   "products": [
     {
-      "name": "Qələm45",
-      "price": 46,
-      "stock": 56889,
-      "id": 1
+      "id": "1",
+      "name": "Qələm",
+      "price": 2.5,
+      "stock": 50
     },
     {
-      "id": 2,
-      "name": "w33Defter",
+      "id": "2",
+      "name": "Defter",
       "price": 5,
       "stock": 30
     },
     {
-      "id": 3,
-      "name": "Silqə",
-      "price": 1,
-      "stock": 100
+      "id": "04ff",
+      "name": "silgi",
+      "price": 33,
+      "stock": 34788
     },
     {
-      "id": 4,
+      "id": "891b",
       "name": "Cavidan",
       "price": 34,
-      "stock": 34
+      "stock": 4578999
     }
   ]
 }

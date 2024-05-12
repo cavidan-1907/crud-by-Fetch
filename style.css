@@ -50,7 +50,7 @@ input[type="number"] {
     border-radius: 5px;
 }
 
-button {
+button,input[type="submit"]  {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;

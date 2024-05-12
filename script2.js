@@ -4,10 +4,16 @@ const updateForm = document.querySelector("#updateForm");
 
 const url = "http://localhost:3000/products";
 
-const fetchData = async () => {
-        const response = await fetch(url);
-        const data = await response.json();
-        renderTable(data);
+const fetchData = () => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+                const data = JSON.parse(xhr.responseText);
+                renderTable(data);
+        } 
+    };
+    xhr.open("GET", url);
+    xhr.send();
 };
 
 const renderTable = (products) => {
@@ -34,31 +40,33 @@ addForm.addEventListener("submit", async (event) => {
     const name = document.querySelector("#name").value;
     const price = parseFloat(document.querySelector("#price").value);
     const stock = parseInt(document.querySelector("#stock").value);
-
-    if (name && !isNaN(price) && !isNaN(stock)) {
         const newProduct = { name, price, stock };
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newProduct),
-            });
-            const data = await response.json();
-            console.log('Product added:', data);
-            fetchData();
-        } 
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                    const data = JSON.parse(xhr.responseText);
+                    console.log('Product added:', data);
+                    fetchData();
+            }
+        };
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(newProduct));
 });
 
 const deleteProduct = async (id) => {
-
-        const response = await fetch(`${url}/${id}`, {
-            method: 'DELETE',
-        });
-        const data = await response.json();
-        console.log('Product deleted:', data);
-        fetchData();
-    
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+        
+                const data = JSON.parse(xhr.responseText);
+                console.log('Product deleted:', data);
+                fetchData();
+            
+        }
+    };
+    xhr.open("DELETE", `${url}/${id}`);
+    xhr.send();
 };
 
 const showUpdateForm = (id, name, price, stock) => {
@@ -77,22 +85,22 @@ updateForm.addEventListener("submit", async (event) => {
     const price = parseFloat(document.querySelector("#updatePrice").value);
     const stock = parseInt(document.querySelector("#updateStock").value);
 
-    if (name && !isNaN(price) && !isNaN(stock)) {
         const updatedProduct = { name, price, stock };
-            const response = await fetch(`${url}/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedProduct),
-            });
-            const data = await response.json();
-            console.log('Product updated:', data);
-            fetchData();
-            document.querySelector("#updateFormContainer").style.display = "none";
-    }
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                    const data = JSON.parse(xhr.responseText);
+                    console.log('Product updated:', data);
+                    fetchData();
+                    document.querySelector("#updateFormContainer").style.display = "none";
+            }
+        };
+        xhr.open("PATCH", `${url}/${id}`);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(updatedProduct));
 });
 function cancelUpdate() {
     document.querySelector("#updateFormContainer").style.display = "none";
 }
+
 fetchData();

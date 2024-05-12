@@ -30,7 +30,7 @@
             <input type="number" id="price" name="price" required><br><br>
             <label for="stock">Stok:</label>
             <input type="number" id="stock" name="stock" required><br><br>
-            <button type="submit">Əlavə Et</button>
+            <input type="submit" value="elave et">
         </form>
         <div id="updateFormContainer" style="display:none;">
             <h2>Məhsulu Düzəliş Et</h2>
@@ -43,10 +43,11 @@
                 <label for="updateStock">Stok:</label>
                 <input type="number" id="updateStock" name="stock" required><br><br>
                 <button type="submit">Düzəliş Et</button>
-                <button type="button" onclick="cancelUpdate()">Ləğv Et</button>
+                <button onclick="cancelUpdate()">Ləğv Et</button>
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script3.js"></script>
 </body>
 </html>
