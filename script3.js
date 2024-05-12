@@ -1,14 +1,13 @@
 const tbody = document.querySelector("tbody");
 const addForm = document.querySelector("#addForm");
 const updateForm = document.querySelector("#updateForm");
+
 const url = "http://localhost:3000/products";
 const fetchData = async () => {
     const response = await axios.get(url);
-    renderTable(response.data);
-};
-const renderTable = (products) => {
+    const data = await response.data
     tbody.innerHTML = "";
-    products.forEach(product => {
+    data.forEach(product => {
         const row = `
             <tr>
                 <td>${product.name}</td>

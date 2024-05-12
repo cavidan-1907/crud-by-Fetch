@@ -9,30 +9,27 @@ const fetchData = () => {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
                 const data = JSON.parse(xhr.responseText);
-                renderTable(data);
+                tbody.innerHTML = "";
+                data.forEach(product => {
+                    const row = `
+                        <tr>
+                            <td>${product.name}</td>
+                            <td>${product.price}</td>
+                            <td>${product.stock}</td>
+                            <td>
+                                <button onclick="deleteProduct('${product.id}')">Sil</button>
+                                <button onclick="showUpdateForm('${product.id}', '${product.name}', ${product.price}, ${product.stock})">Düzəliş et</button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
         } 
     };
     xhr.open("GET", url);
     xhr.send();
 };
 
-const renderTable = (products) => {
-    tbody.innerHTML = "";
-    products.forEach(product => {
-        const row = `
-            <tr>
-                <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.stock}</td>
-                <td>
-                    <button onclick="deleteProduct('${product.id}')">Sil</button>
-                    <button onclick="showUpdateForm('${product.id}', '${product.name}', ${product.price}, ${product.stock})">Düzəliş et</button>
-                </td>
-            </tr>
-        `;
-        tbody.innerHTML += row;
-    });
-};
 
 addForm.addEventListener("submit", async (event) => {
     event.preventDefault();
